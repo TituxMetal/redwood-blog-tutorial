@@ -7,14 +7,16 @@ type BlogLayoutProps = {
 const BlogLayout = ({ children }: BlogLayoutProps) => {
   return (
     <>
-      <header>
-        <h1>Redwood Blog</h1>
-        <nav>
-          <Link to={routes.home()}>Home</Link>
-          <Link to={routes.about()}>About</Link>
-        </nav>
+      <header className='bg-sky-800 p-4 text-zinc-100'>
+        <section className='container mx-auto flex items-center justify-between'>
+          <h1 className='text-xl'>Redwood Blog</h1>
+          <nav className='flex space-x-4'>
+            <Link to={routes.home()}>Home</Link>
+            <Link to={routes.about()}>About</Link>
+          </nav>
+        </section>
       </header>
-      <main>{children}</main>
+      <main className='container mx-auto'>{children}</main>
     </>
   )
 }
