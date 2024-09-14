@@ -1,18 +1,23 @@
 // https://prettier.io/docs/en/options.html
 /** @type {import('prettier').RequiredOptions} */
 module.exports = {
-  trailingComma: 'es5',
+  arrowParens: 'avoid',
   bracketSpacing: true,
-  tabWidth: 2,
+  jsxSingleQuote: true,
+  printWidth: 100,
+  proseWrap: 'always',
   semi: false,
   singleQuote: true,
-  arrowParens: 'always',
+  tabWidth: 2,
+  trailingComma: 'none',
   overrides: [
     {
       files: 'Routes.*',
       options: {
-        printWidth: 999,
-      },
-    },
+        printWidth: 999
+      }
+    }
   ],
+  tailwindConfig: './web/config/tailwind.config.js',
+  plugins: ['prettier-plugin-tailwindcss']
 }
