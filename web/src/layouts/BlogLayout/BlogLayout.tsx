@@ -17,6 +17,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
           <nav className='flex space-x-4'>
             <Link to={routes.home()}>Home</Link>
             <Link to={routes.about()}>About</Link>
+            <Link to={routes.contact()}>Contact</Link>
           </nav>
         </section>
       </header>
