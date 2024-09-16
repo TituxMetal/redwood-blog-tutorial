@@ -1,6 +1,6 @@
-import { render } from '@redwoodjs/testing/web'
+import { render, screen } from '@redwoodjs/testing/web'
 
-import { Loading, Empty, Failure, Success } from './ArticleCell'
+import { Empty, Failure, Loading, Success } from './ArticleCell'
 import { standard } from './ArticleCell.mock'
 
 // Generated boilerplate tests do not account for all circumstances
@@ -35,8 +35,11 @@ describe('ArticleCell', () => {
   // 2. Add test: expect(screen.getByText('Hello, world')).toBeInTheDocument()
 
   it('renders Success successfully', async () => {
-    expect(() => {
-      render(<Success article={standard().article} />)
-    }).not.toThrow()
+    const article = standard().article
+
+    render(<Success article={article} />)
+
+    expect(screen.getByText(article.title)).toBeInTheDocument()
+    expect(screen.getByText(article.body)).toBeInTheDocument()
   })
 })
