@@ -7,10 +7,11 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { Route, Router, Set } from '@redwoodjs/router'
+import { PrivateSet, Route, Router, Set } from '@redwoodjs/router'
 
 import BlogLayout from 'src/layouts/BlogLayout'
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
+
 import { useAuth } from './auth'
 
 const Routes = () => {
@@ -20,12 +21,14 @@ const Routes = () => {
       <Route path='/signup' page={SignupPage} name='signup' />
       <Route path='/forgot-password' page={ForgotPasswordPage} name='forgotPassword' />
       <Route path='/reset-password' page={ResetPasswordPage} name='resetPassword' />
-      <Set wrap={ScaffoldLayout} title='Posts' titleTo='posts' buttonLabel='New Post' buttonTo='newPost'>
+      <PrivateSet unauthenticated='login'>
+        <Set wrap={ScaffoldLayout} title='Posts' titleTo='posts' buttonLabel='New Post' buttonTo='newPost'>
           <Route path='/admin/posts/new' page={PostNewPostPage} name='newPost' />
           <Route path='/admin/posts/{id}/edit' page={PostEditPostPage} name='editPost' />
           <Route path='/admin/posts/{id}' page={PostPostPage} name='post' />
           <Route path='/admin/posts' page={PostPostsPage} name='posts' />
-      </Set>
+        </Set>
+      </PrivateSet>
       <Set wrap={BlogLayout}>
         <Route path='/about' page={AboutPage} name='about' />
         <Route path='/contact' page={ContactPage} name='contact' />
