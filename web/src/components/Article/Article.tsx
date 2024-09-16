@@ -2,6 +2,7 @@ import { Post } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
+import CommentsCell from 'src/components/CommentsCell'
 import { timeTag, truncate } from 'src/lib/formatters'
 
 interface Props {
@@ -24,6 +25,11 @@ const Article = ({ item, summary = false }: Props) => {
         <span>Created at: {timeTag(item.createdAt)}</span>
         <span>Updated at: {timeTag(item.updatedAt)}</span>
       </div>
+      {!summary && (
+        <div className='mt-12'>
+          <CommentsCell />
+        </div>
+      )}
     </article>
   )
 }
