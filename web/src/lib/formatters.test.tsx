@@ -106,6 +106,10 @@ describe('formattedDate', () => {
 
     expect(formattedDate(date, true)).toEqual('January 31, 2024 at 13:37')
   })
+
+  it('should throw an error for invalid date', () => {
+    expect(() => formattedDate('invalid date')).toThrow('Invalid date')
+  })
 })
 
 describe('jsonDisplay', () => {

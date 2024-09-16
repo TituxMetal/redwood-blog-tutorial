@@ -56,6 +56,11 @@ export const formattedDate = (
   withTime: boolean = false
 ) => {
   const parsedDate = new Date(datetime)
+
+  if (parsedDate.toString() === 'Invalid Date') {
+    throw new Error('Invalid date')
+  }
+
   const month = parsedDate.toLocaleString('default', { month: 'long' })
   const day = parsedDate.getDate()
   const year = parsedDate.getFullYear()
