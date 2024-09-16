@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@redwoodjs/testing/web'
 import {
   checkboxInputTag,
   formatEnum,
+  formattedDate,
   jsonDisplay,
   jsonTruncate,
   timeTag,
@@ -90,6 +91,20 @@ describe('timeTag', () => {
 
   it('can take an empty input string', async () => {
     expect(timeTag('')).toEqual('')
+  })
+})
+
+describe('formattedDate', () => {
+  it('formats a date', () => {
+    const date = new Date('2024-01-31T13:37:42Z')
+
+    expect(formattedDate(date)).toEqual('January 31, 2024')
+  })
+
+  it('formats a date with time', () => {
+    const date = new Date('2024-01-31T13:37:42Z')
+
+    expect(formattedDate(date, true)).toEqual('January 31, 2024 at 13:37')
   })
 })
 

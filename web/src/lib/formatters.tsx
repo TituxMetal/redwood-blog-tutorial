@@ -51,6 +51,20 @@ export const timeTag = (dateTime?: string) => {
   return output
 }
 
+export const formattedDate = (
+  datetime: ConstructorParameters<typeof Date>[0],
+  withTime: boolean = false
+) => {
+  const parsedDate = new Date(datetime)
+  const month = parsedDate.toLocaleString('default', { month: 'long' })
+  const day = parsedDate.getDate()
+  const year = parsedDate.getFullYear()
+  const hour = parsedDate.toISOString().slice(11, 13)
+  const minute = parsedDate.toISOString().slice(14, 16)
+
+  return `${month} ${day}, ${year}${withTime ? ` at ${hour}:${minute}` : ''}`
+}
+
 export const checkboxInputTag = (checked: boolean) => {
   return <input type='checkbox' checked={checked} disabled />
 }
