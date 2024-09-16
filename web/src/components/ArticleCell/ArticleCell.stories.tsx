@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Loading, Empty, Failure, Success } from './ArticleCell'
+import { Empty, Failure, Loading, Success } from './ArticleCell'
 import { standard } from './ArticleCell.mock'
 
 const meta: Meta = {
@@ -30,6 +30,6 @@ export const failure: StoryObj<typeof Failure> = {
 
 export const success: StoryObj<typeof Success> = {
   render: args => {
-    return Success ? <Success {...standard()} {...args} /> : <></>
+    return Success ? <Success article={standard().article} {...args} /> : <></>
   }
 }

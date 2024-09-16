@@ -1,8 +1,15 @@
+import { Post } from 'types/graphql'
+
 import { Link, routes } from '@redwoodjs/router'
 
-import { timeTag } from 'src/lib/formatters'
+import { timeTag, truncate } from 'src/lib/formatters'
 
-const Article = ({ item }) => {
+interface Props {
+  item: Post
+  summary?: boolean
+}
+
+const Article = ({ item, summary = false }: Props) => {
   return (
     <article key={item.id} className='mt-8 rounded-lg bg-zinc-700 p-6 text-zinc-100 shadow-md'>
       <header className='mb-4'>
@@ -12,7 +19,7 @@ const Article = ({ item }) => {
           </Link>
         </h2>
       </header>
-      <p>{item.body}</p>
+      <p>{summary ? truncate(item.body) : item.body}</p>
       <div className='mt-4 flex flex-col text-sm text-zinc-300'>
         <span>Created at: {timeTag(item.createdAt)}</span>
         <span>Updated at: {timeTag(item.updatedAt)}</span>
