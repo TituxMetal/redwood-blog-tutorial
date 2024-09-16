@@ -1,12 +1,12 @@
-import { render, waitFor, screen } from '@redwoodjs/testing/web'
+import { render, screen, waitFor } from '@redwoodjs/testing/web'
 
 import {
+  checkboxInputTag,
   formatEnum,
-  jsonTruncate,
-  truncate,
-  timeTag,
   jsonDisplay,
-  checkboxInputTag
+  jsonTruncate,
+  timeTag,
+  truncate
 } from './formatters'
 
 describe('formatEnum', () => {

@@ -7,9 +7,12 @@ export const formatEnum = (values: string | string[] | null | undefined) => {
     const humanizedValues = values.map(value => humanize(value))
     return humanizedValues.join(', ')
   }
+
   if (typeof values === 'string') {
     return humanize(values)
   }
+
+  return ''
 }
 
 export const jsonDisplay = (obj: unknown) => {
