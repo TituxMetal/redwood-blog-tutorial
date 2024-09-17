@@ -17,7 +17,7 @@ export const QUERY: TypedDocumentNode<CommentsQuery, CommentsQueryVariables> = g
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <div>Empty</div>
+export const Empty = () => <div className='text-center text-gray-400'>No comments yet</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
