@@ -5,8 +5,8 @@ import type { CellFailureProps, CellSuccessProps, TypedDocumentNode } from '@red
 import Comment from '../Comment/Comment'
 
 export const QUERY: TypedDocumentNode<CommentsQuery, CommentsQueryVariables> = gql`
-  query CommentsQuery {
-    comments {
+  query CommentsQuery($postId: String!) {
+    comments(postId: $postId) {
       id
       name
       body
