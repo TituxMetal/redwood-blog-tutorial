@@ -1,9 +1,14 @@
+import type { Prisma } from '@prisma/client'
 import type { CommentRelationResolvers, MutationResolvers, QueryResolvers } from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
-export const comments: QueryResolvers['comments'] = () => {
-  return db.comment.findMany()
+export const comments: QueryResolvers['comments'] = ({
+  postId
+}: Required<Pick<Prisma.CommentWhereInput, 'postId'>>) => {
+  return db.comment.findMany({
+    where: { postId }
+  })
 }
 
 export const Comment: CommentRelationResolvers = {
