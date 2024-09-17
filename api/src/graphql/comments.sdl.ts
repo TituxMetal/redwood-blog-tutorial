@@ -10,7 +10,7 @@ export const schema = gql`
   }
 
   type Query {
-    comments: [Comment!]! @skipAuth
+    comments(postId: String!): [Comment!]! @skipAuth
   }
 
   input CreateCommentInput {
