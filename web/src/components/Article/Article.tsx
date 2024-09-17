@@ -5,6 +5,8 @@ import { Link, routes } from '@redwoodjs/router'
 import CommentsCell from 'src/components/CommentsCell'
 import { timeTag, truncate } from 'src/lib/formatters'
 
+import CommentForm from '../CommentForm/CommentForm'
+
 interface Props {
   item: Post
   summary?: boolean
@@ -27,7 +29,10 @@ const Article = ({ item, summary = false }: Props) => {
       </div>
       {!summary && (
         <div className='mt-12'>
-          <CommentsCell />
+          <CommentForm postId={item.id} />
+          <div className='mt-12'>
+            <CommentsCell postId={item.id} />
+          </div>
         </div>
       )}
     </article>
