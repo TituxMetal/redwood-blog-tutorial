@@ -10,6 +10,7 @@ export const QUERY: TypedDocumentNode<CommentsQuery, CommentsQueryVariables> = g
       id
       name
       body
+      postId
       createdAt
     }
   }
