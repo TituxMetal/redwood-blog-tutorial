@@ -4,7 +4,7 @@ import type { ScenarioData } from '@redwoodjs/testing/api'
 
 export const standard = defineScenario<Prisma.CommentCreateArgs>({
   comment: {
-    one: {
+    jane: {
       data: {
         name: 'Jane Doe',
         body: 'I like trees',
@@ -16,7 +16,7 @@ export const standard = defineScenario<Prisma.CommentCreateArgs>({
         }
       }
     },
-    two: {
+    john: {
       data: {
         name: 'John Doe',
         body: 'I like cars',
