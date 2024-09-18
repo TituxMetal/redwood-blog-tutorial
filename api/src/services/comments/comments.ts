@@ -1,6 +1,7 @@
 import type { Prisma } from '@prisma/client'
 import type { CommentRelationResolvers, MutationResolvers, QueryResolvers } from 'types/graphql'
 
+import { requireAuth } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
 export const comments: QueryResolvers['comments'] = ({
@@ -24,6 +25,8 @@ export const createComment: MutationResolvers['createComment'] = ({ input }) => 
 }
 
 export const deleteComment: MutationResolvers['deleteComment'] = ({ id }) => {
+  requireAuth({ roles: ['moderator'] })
+
   return db.comment.delete({
     where: { id }
   })

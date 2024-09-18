@@ -30,6 +30,6 @@ export const schema = gql`
   }
 
   type Mutation {
-    deleteComment(id: String!): Comment! @requireAuth
+    deleteComment(id: String!): Comment! @requireAuth(roles: ["moderator"])
   }
 `
