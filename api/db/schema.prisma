@@ -46,6 +46,7 @@ model User {
   salt                String
   resetPasswordToken  String?
   resetTokenExpiresAt DateTime?
+  roles               String    @default("moderator")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
