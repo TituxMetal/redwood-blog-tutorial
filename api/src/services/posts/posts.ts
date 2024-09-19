@@ -1,4 +1,4 @@
-import type { QueryResolvers } from 'types/graphql'
+import type { PostRelationResolvers, QueryResolvers } from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
@@ -7,7 +7,11 @@ export const posts: QueryResolvers['posts'] = () => {
 }
 
 export const post: QueryResolvers['post'] = ({ id }) => {
-  return db.post.findUnique({
-    where: { id }
-  })
+  return db.post.findUnique({ where: { id } })
+}
+
+export const Post: PostRelationResolvers = {
+  user: (_obj, { root }) => {
+    return db.post.findFirst({ where: { id: root?.id } }).user()
+  }
 }
