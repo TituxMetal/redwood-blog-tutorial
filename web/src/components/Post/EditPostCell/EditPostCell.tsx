@@ -1,7 +1,7 @@
 import type { EditPostById, UpdatePostInput, UpdatePostMutationVariables } from 'types/graphql'
 
 import { navigate, routes } from '@redwoodjs/router'
-import type { CellSuccessProps, CellFailureProps, TypedDocumentNode } from '@redwoodjs/web'
+import type { CellFailureProps, CellSuccessProps, TypedDocumentNode } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
@@ -9,7 +9,7 @@ import PostForm from 'src/components/Post/PostForm'
 
 export const QUERY: TypedDocumentNode<EditPostById> = gql`
   query EditPostById($id: String!) {
-    post: post(id: $id) {
+    post: adminPost(id: $id) {
       id
       title
       body

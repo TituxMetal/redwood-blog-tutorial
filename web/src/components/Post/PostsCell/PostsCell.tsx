@@ -1,13 +1,13 @@
 import type { FindPosts, FindPostsVariables } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
-import type { CellSuccessProps, CellFailureProps, TypedDocumentNode } from '@redwoodjs/web'
+import type { CellFailureProps, CellSuccessProps, TypedDocumentNode } from '@redwoodjs/web'
 
 import Posts from 'src/components/Post/Posts'
 
 export const QUERY: TypedDocumentNode<FindPosts, FindPostsVariables> = gql`
   query FindPosts {
-    posts {
+    posts: adminPosts {
       id
       title
       body
