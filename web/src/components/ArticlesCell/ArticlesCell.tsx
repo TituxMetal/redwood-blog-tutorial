@@ -10,6 +10,10 @@ export const QUERY: TypedDocumentNode<ArticlesQuery, ArticlesQueryVariables> = g
       id
       title
       body
+      user {
+        name
+        email
+      }
       createdAt
       updatedAt
     }

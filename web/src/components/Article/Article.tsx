@@ -13,14 +13,19 @@ interface Props {
 }
 
 const Article = ({ item, summary = false }: Props) => {
+  const nameOrEmail = item.user?.name || item.user?.email
+
   return (
     <article key={item.id} className='mt-8 rounded-lg bg-zinc-700 p-6 text-zinc-100 shadow-md'>
       <header className='mb-4'>
-        <h2 className='text-2xl font-bold text-sky-400'>
-          <Link to={routes.article({ id: item.id })} className='hover:text-sky-500'>
+        <h2 className='text-2xl font-bold'>
+          <Link to={routes.article({ id: item.id })} className='text-sky-400 hover:text-sky-500'>
             {item.title}
-          </Link>
+          </Link>{' '}
         </h2>
+        <p>
+          By <span className='text-zinc-400'>{nameOrEmail}</span>
+        </p>
       </header>
       <p>{summary ? truncate(item.body) : item.body}</p>
       <div className='mt-4 flex flex-col text-sm text-zinc-300'>
