@@ -12,6 +12,10 @@ export const QUERY: TypedDocumentNode<FindArticleQuery, FindArticleQueryVariable
       title
       updatedAt
       createdAt
+      user {
+        name
+        email
+      }
     }
   }
 `
